@@ -62,32 +62,34 @@ const CurrencyConverter = () => {
     <div className='converter'>
         <h2>Conversor de moedas</h2>
 
-        <input type="number" placeholder='Digite o valor...'
-        value={amount} onChange={(e) => setAmount(e.target.value)}/>
         <span>Selecione as moedas</span>
 
-        {/* Dropdown para selecionar a moeda de origem */}
-        <select value={fromCurrency} onChange={(e) => setFromCurrency(e.target.value)}>
-            {Object.keys(rates).map((currency)=> (
-                <option key={currency} value={currency}>
-                    {currency}
-                </option>
-            ))}
-        </select>
+        <div className='coins'>
+            {/* Dropdown para selecionar a moeda de origem */}
+            <select value={fromCurrency} onChange={(e) => setFromCurrency(e.target.value)}>
+                {Object.keys(rates).map((currency)=> (
+                    <option key={currency} value={currency}>
+                        {currency}
+                    </option>
+                ))}
+            </select>
+            <span>para</span>
+            {/* Dropdown para selecionar a moeda de destino */}
+            <select value={ToCurrency} onChange={(e) => setToCurrency(e.target.value)}>
+                {Object.keys(rates).map((currency)=> (
+                    <option key={currency} value={currency}>
+                        {currency}
+                    </option>
+                ))}
+            </select>
+        </div>
 
-        <span>para</span>
+        <span>Selecione a quantidade</span>
 
-        {/* Dropdown para selecionar a moeda de destino */}
-        <select value={ToCurrency} onChange={(e) => setToCurrency(e.target.value)}>
-            {Object.keys(rates).map((currency)=> (
-                <option key={currency} value={currency}>
-                    {currency}
-                </option>
-            ))}
-        </select>
+        <input type="number" placeholder='Digite o valor...'
+        value={amount} onChange={(e) => setAmount(e.target.value)}/>
 
         <h3 className='h3'>{ConvertedAmount} {ToCurrency}</h3>
-        <p>{amount} {fromCurrency} valem {ConvertedAmount} {ToCurrency}</p>
     </div>
   )
 }
